@@ -1,0 +1,57 @@
+.sidebar .sidebar-item .sidebar-content .colors .color .color-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.sidebar
+    .sidebar-item
+    .sidebar-content
+    .colors
+    .color
+    .color-checkbox
+    + .color-name {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.sidebar
+    .sidebar-item
+    .sidebar-content
+    .colors
+    .color
+    .color-checkbox
+    + .color-name::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid rgba(68, 68, 68, 20%);
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-sizing: border-box;
+}
+
+.sidebar
+    .sidebar-item
+    .sidebar-content
+    .colors
+    .color
+    .color-checkbox:checked
+    + .color-name {
+    color: rgba(255, 142, 142, 1);
+}
+
+.sidebar
+    .sidebar-item
+    .sidebar-content
+    .colors
+    .color
+    .color-checkbox:checked
+    + .color-name::before {
+    background-image: url("../../../../../../../public/icons/check-pink.svg");
+}

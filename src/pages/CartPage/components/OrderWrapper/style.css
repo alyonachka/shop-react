@@ -1,0 +1,7 @@
+.cart .order-wrapper {
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}

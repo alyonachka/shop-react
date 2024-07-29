@@ -1,0 +1,40 @@
+.sidebar .sidebar-item .sidebar-content .reviewed-products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar .sidebar-item .sidebar-content .reviewed-products .product {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.sidebar
+    .sidebar-item
+    .sidebar-content
+    .reviewed-products
+    .product
+    .image
+    .product-image {
+    width: 75px;
+    height: 85px;
+}
+
+.sidebar .sidebar-item .sidebar-content .reviewed-products .product .info {
+    max-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar
+    .sidebar-item
+    .sidebar-content
+    .reviewed-products
+    .product
+    .info
+    .price {
+    display: flex;
+    gap: 10px;
+}

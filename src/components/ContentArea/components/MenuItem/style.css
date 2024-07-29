@@ -1,0 +1,10 @@
+.page-header .left-block .title-menu-wrapper .menu .menu-item {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    color: black;
+}
+
+.page-header .left-block .title-menu-wrapper .menu .menu-item.active {
+    color: rgba(255, 142, 142, 1);
+}

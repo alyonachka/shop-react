@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Описание приложения
+Онлайн-магазин одежды, где пользователи могут просматривать товары, добавлять их в избранное, а также добавлять вещи в корзину. На странице магазина есть возможность искать и сортировать товары по названию, применять фильтры на категорию, цену и цвет. Страница корзины еще не реализована, функционал позже будет описан.
 
-## Available Scripts
+2. Технологии и интрументы
+Для создания приложения был использован следующий стек технологий: ReactJS для разработки SPA
 
-In the project directory, you can run:
+3.  Описание компонентов
+Компонент Header будет использоваться на странице магазина и корзины, содержит в себе логотип, меню, а также количество товаров в корзине и в избранном. Header/LogoContainer - глупый компонент для отображения бургер-меню и логотипа. Header/Menu - компонет для отображения навигации по страницам сайта магазина (ссылок для навигации нет, тоже глупый). Header/Menu/MenuItem - компонент для отображения элемента меню, принимает в качестве пропсов название и наличие стрелки. Header/RightSide - компонент правой части хэдера сайта, показывает количество товаров в корзине и избранном. Он использует контекст headerContex для отображения динамичных счестчиков. Header/RightSide/HeaderIcon - тоже глупый компонент, принимает иконку, изображение иконки и счетчик если он нужен. 
+ContentArea - компонент шапки сайта, отображает название страницы и фото (серый квадрат).
 
-### `npm start`
+pages/ShopPage - компонент для страницы магазина. Включает в себя хэдер, шапку страницы, компоненты для отображения фильтрации и товаров, блок для подписки и футер. Он предоставляет доступ к контекту продуктов productsContex для боковой фильтрации и оболочки продуктов. 
+ShopPage/SideBar - боковая панель фильтрации и блока Reviewed By You. Применяют фильтрацию по строке поиска и фильтрам, изменяет отфильтрованные продукты через редьюсер. Так же блокирует при необходимости кнопку применения фильтра. Компонент SategoryMenuItem - глупый для отображения категории товара, Color - глупый для отображения чекбоксов с цветами, ReviewedByYou - генерирует один раз три рандомных продукта внизу фильтра, SideBarItem - глупый для отображения блоков для фильтрации (по категории, цене и цвету). 
+ShopPage/ProductsWrapper - для отображения количества продуктов, сортировки и самиз продуктов. ProductsWrapper/Sort - сортирует товары используя функцию sortProducts и устанавливает через редьюсер отсортированные продукты. ProductsWrapper/Products - для отображения продуктов, получает из контекста их и проходится циклом по ним.  ProductsWrapper/Products/Product - отображение конкретного продукта,  а также функционал для добавления его в корзину и избранное, в том числе удаление из избранного. 
+ProductsWrapper/Pagination - отображает количество страниц и кнопки перехода. Получает отфильтрованные продукты из контекста, высчитывает количество продуктов на странице и устанавливает пагинированные продукты в контекст для отображения. ProductsWrapper/Pagination/Page - компонент для отображения страницы и обработки клика по ней.
+NewsLetter - компонент для отображения блока подписки.
+Footer - низ сайта с ссылками и доп информацией.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+CartPage - страница корзины. CartPage/OrderWrapper - обретка для продуктов в корзине и итоговой стоимости и скидки. CartPage/OrderWrapper/Order - итоговая стоимость с учетом скидок и промокода. В нем рассчитывается итоговая сумма по продуктам из локального хранилища. И дата доставки устанавливается как +5 дней с текущей даты. CartPage/OrderWrapper/ProductList - вывод всех продуктов из корзины. CartPage/OrderWrapper/ProductList/Product - глупый компонент для вывода отдельного продукта. CartPage/Promocode - применение промокода. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. Логика работы приложения
+При добавлении товара в избранное или корзину, данные сохраняются в LocalStorage, чтобы корректно отображать данные о количестве товаров в корзине и избранном и данные на странице корзины на стороне пользователя при обновлении страницы или при позжем возвращении на сайт. При фильтрации продуктов данные устанавливаются в контекст, чтобы они были доступны для фильтрации, сортировки и пагинации в разных компонентах. Так же есть отдельный контекст для фильтра
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+В странице корзины выводятся продукты из локального хранилища, рассчитывается итоговая сумма и применен ли промокод. Для промокода создан отдельный контекст и редьюсер для управления им. Информация хранится в объекте с двумя свойствами: применен ли промокод и скидка, из этой информации идет расчет в компоненте Order итоговой стоимости.

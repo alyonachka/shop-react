@@ -1,0 +1,34 @@
+.menu-item {
+    cursor: pointer;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.menu-item:hover .arrow-default {
+    display: none;
+}
+
+.menu-item.active,
+.menu-item:hover {
+    color: #ff8e8e;
+}
+
+.menu-item.active .arrow-default {
+    display: none;
+}
+
+.menu-item.active .arrow-hover {
+    display: inline-block;
+}
+
+.menu-item:hover .arrow-hover {
+    display: inline-block;
+}
+
+.menu-item .arrow-hover {
+    display: none;
+}

@@ -1,0 +1,6 @@
+.cart {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin: 200px auto 250px auto;
+}

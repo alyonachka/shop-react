@@ -1,0 +1,80 @@
+.newsletter-wrapper {
+    max-width: 1680px;
+    width: 100%;
+    height: 450px;
+    background-color: rgba(241, 242, 243, 1);
+    margin: 0 auto 120px auto;
+}
+
+.newsletter-wrapper .newsletter {
+    max-width: 625px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    margin-left: 275px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+}
+
+.newsletter-wrapper .newsletter .dots-icon {
+    position: absolute;
+    right: 30px;
+    top: -30px;
+}
+
+.newsletter-wrapper .newsletter .newsletter-content {
+    margin: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.newsletter-wrapper .newsletter .newsletter-content .newsletter-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.newsletter-wrapper .newsletter .newsletter-content .newsletter-info .title {
+    font-family: Josefin Sans;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 38px;
+    color: black;
+}
+
+.newsletter-wrapper .newsletter .newsletter-content .newsletter-info .text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(68, 68, 68, 1);
+}
+
+.newsletter-wrapper .newsletter .newsletter-content .newsletter-form {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: center;
+}
+
+.newsletter-wrapper .newsletter .newsletter-content .newsletter-form .input {
+    align-self: end;
+}
+
+.newsletter-wrapper
+    .newsletter
+    .newsletter-content
+    .newsletter-form
+    .button-wrapper {
+    max-width: 140px;
+}
+
+.newsletter-wrapper
+    .newsletter
+    .newsletter-content
+    .newsletter-form
+    .button-wrapper
+    Button {
+    padding: 17px 30px;
+}

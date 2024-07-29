@@ -1,24 +1,78 @@
-import logo from './logo.svg';
+import { useReducer } from 'react';
 import './App.css';
+import { Shop } from './pages/ShopPage';
+import { headerReducer, initialState } from './reducers/headerReducer';
+import { HeaderContext } from './context/headerContext'
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { Cart } from './pages/CartPage';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
+
+
+const PRODUCT_IN_BASKET_KEY = "product-in-basket";
+const PRODUCT_IN_FAVORITE_KEY = "product-in-favorites";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Shop />,
+  },
+  {
+    path: "/shop",
+    element: <Shop />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
+  },
+]);
+
+const init = (getFromLS) => {
+
+  let state = {
+    basketCounter: 0,
+    favoritesCounter: 0,
+  }
+
+  const productsInBasket = getFromLS(PRODUCT_IN_BASKET_KEY);
+  const productsInFav = getFromLS(PRODUCT_IN_FAVORITE_KEY);
+
+  if (productsInBasket) {
+    let countProductsInBasket = 0;
+
+    productsInBasket.forEach(
+      (product) => (countProductsInBasket += product.quantity)
+    );
+
+    state = {
+      ...state,
+      basketCounter: countProductsInBasket
+    }
+  }
+
+  if (productsInFav) {
+    state = {
+      ...state,
+      favoritesCounter: productsInFav.length
+    }
+  }
+
+  return state
+
+}
 
 function App() {
+  const { getFromLS } = useLocalStorage()
+  const [state, dispatch] = useReducer(headerReducer, initialState, () => init(getFromLS));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <HeaderContext.Provider value={{ state, dispatch }}>
+        <RouterProvider router={router} />
+      </HeaderContext.Provider>
+    </>
   );
 }
 

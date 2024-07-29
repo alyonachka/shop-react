@@ -1,0 +1,22 @@
+.page {
+    min-width: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.page .underline {
+    border: 2px solid #c2c9d0;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.page.active {
+    font-weight: 600;
+    color: black;
+}
+.page.active .underline {
+    border-color: black;
+    min-width: 22px;
+}

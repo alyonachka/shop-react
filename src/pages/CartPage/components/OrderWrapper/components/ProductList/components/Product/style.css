@@ -1,0 +1,118 @@
+.cart .order-wrapper .product-list .product {
+    display: flex;
+    position: relative;
+    border-bottom: 1px solid rgba(68, 68, 68, 10%);
+    gap: 30px;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.cart .order-wrapper .product-list .product .photo {
+    max-width: 130px;
+    width: 100%;
+    height: 140px;
+    background-color: rgba(241, 242, 243, 1);
+}
+
+.cart .order-wrapper .product-list .product .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.cart .order-wrapper .product-list .product .product-info .title {
+    font-family: Josefin Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.cart .order-wrapper .product-list .product .product-info .price-wrapper {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart
+    .order-wrapper
+    .product-list
+    .product
+    .product-info
+    .price-wrapper
+    .price-and-quantity {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.cart
+    .order-wrapper
+    .product-list
+    .product
+    .product-info
+    .price-wrapper
+    .price-and-quantity
+    .quantity {
+    display: flex;
+    gap: 20px;
+    padding: 17px 23px;
+    background-color: rgba(248, 248, 251, 1);
+}
+
+.cart
+    .order-wrapper
+    .product-list
+    .product
+    .product-info
+    .price-wrapper
+    .price-and-quantity
+    .quantity
+    .count-button {
+    cursor: pointer;
+    color: rgba(153, 153, 153, 1);
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.cart
+    .order-wrapper
+    .product-list
+    .product
+    .product-info
+    .price-wrapper
+    .price-and-quantity
+    .quantity
+    .count {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.cart
+    .order-wrapper
+    .product-list
+    .product
+    .product-info
+    .price-wrapper
+    .total-price {
+    font-family: Josefin Sans;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.cart .order-wrapper .product-list .product .product-info .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px 8px;
+    border: 1px solid rgba(68, 68, 68, 10%);
+    color: rgba(68, 68, 68, 10%);
+    cursor: pointer;
+}

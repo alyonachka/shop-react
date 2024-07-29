@@ -1,0 +1,15 @@
+.sidebar .sidebar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar .sidebar-item .sidebar-title {
+    font-family: Josefin Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    color: #000000;
+    padding-bottom: 15px;
+    border-bottom: 2px solid black;
+}
