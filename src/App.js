@@ -16,7 +16,7 @@ const PRODUCT_IN_FAVORITE_KEY = "product-in-favorites";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/shop-react",
     element: <Shop />,
   },
   {
