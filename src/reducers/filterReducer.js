@@ -32,6 +32,6 @@ export const filterReducer = (state, action) => {
         case 'reset_filters':
             return initialState
         default:
-            return Error(`Unknown action type: ${action.type}`)
+            return state
     }
 }

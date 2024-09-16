@@ -1,33 +1,14 @@
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import './App.css';
 import { Shop } from './pages/ShopPage';
 import { headerReducer, initialState } from './reducers/headerReducer';
 import { HeaderContext } from './context/headerContext'
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { Cart } from './pages/CartPage';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
-
+import { PageContext } from "./context/pageContext"
 
 const PRODUCT_IN_BASKET_KEY = "product-in-basket";
 const PRODUCT_IN_FAVORITE_KEY = "product-in-favorites";
-
-const router = createBrowserRouter([
-  {
-    path: "/shop-react",
-    element: <Shop />,
-  },
-  {
-    path: "/shop-react/shop",
-    element: <Shop />,
-  },
-  {
-    path: "/shop-react/cart",
-    element: <Cart />,
-  },
-]);
 
 const init = (getFromLS) => {
 
@@ -66,11 +47,15 @@ const init = (getFromLS) => {
 function App() {
   const { getFromLS } = useLocalStorage()
   const [state, dispatch] = useReducer(headerReducer, initialState, () => init(getFromLS));
+  const [page, setPage] = useState("shop")
 
   return (
     <>
       <HeaderContext.Provider value={{ state, dispatch }}>
-        <RouterProvider router={router} />
+        <PageContext.Provider value={{ page, setPage }} >
+          {page === "shop" && <Shop />}
+          {page === "cart" && <Cart />}
+        </PageContext.Provider>
       </HeaderContext.Provider>
     </>
   );

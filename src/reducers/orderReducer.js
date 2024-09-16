@@ -14,6 +14,6 @@ export const orderReducer = (state, action) => {
         case 'reset_discount':
             return initialState
         default:
-            return new Error(`Unknown action type: ${action.type}`)
+            return state
     }
 }

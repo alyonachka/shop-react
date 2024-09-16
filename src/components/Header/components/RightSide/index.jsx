@@ -2,9 +2,15 @@ import { useContext } from "react";
 import { HeaderIcon } from "./components/HeaderIcon";
 import "./style.css";
 import { HeaderContext } from "../../../../context/headerContext";
+import { PageContext } from "../../../../context/pageContext";
 
 export const RightSide = () => {
     const { state } = useContext(HeaderContext);
+    const { setPage } = useContext(PageContext);
+
+    const changeToCartPage = () => {
+        setPage("cart");
+    };
 
     return (
         <div className="right-side">
@@ -19,6 +25,7 @@ export const RightSide = () => {
                 img="./icons/cart.svg"
                 alt="cart"
                 counter={state.basketCounter}
+                action={changeToCartPage}
             />
         </div>
     );

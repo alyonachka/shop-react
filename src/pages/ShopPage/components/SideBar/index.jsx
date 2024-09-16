@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useDebounce } from "../../../../hooks/useDebounce";
 import { ProductsContex } from "../../../../context/productsContex";
 import { FilterContext } from "../../../../context/filterContext";
 import "./style.css";
@@ -15,6 +16,8 @@ export const SideBar = () => {
     const { filters, dispatchFilters } = useContext(FilterContext);
     const currentFilter = filters.currentFilter;
     const oldFilter = filters.oldFilter;
+    const [searchValue, setSearchValue] = useState("");
+    const debaunceValue = useDebounce(searchValue, 1000);
 
     useEffect(() => {
         if (
@@ -38,7 +41,7 @@ export const SideBar = () => {
         );
 
         dispatchProducts({
-            type: "set_products",
+            type: "set_filtered_products",
             payload: filteredProducts,
         });
     }, [products.search, products.sort, oldFilter]);
@@ -56,6 +59,13 @@ export const SideBar = () => {
         setDisabled(true);
     };
 
+    useEffect(() => {
+        dispatchProducts({
+            type: "set_search",
+            payload: debaunceValue,
+        });
+    }, [debaunceValue]);
+
     return (
         <div className="sidebar">
             <div className="search">
@@ -63,13 +73,9 @@ export const SideBar = () => {
                     <input
                         type="text"
                         placeholder="Search"
+                        value={searchValue}
                         className="input search-row"
-                        onChange={(e) => {
-                            dispatchProducts({
-                                type: "set_search",
-                                payload: e.target.value,
-                            });
-                        }}
+                        onChange={(e) => setSearchValue(e.target.value)}
                     />
                     <img
                         src="./icons/search.svg"
