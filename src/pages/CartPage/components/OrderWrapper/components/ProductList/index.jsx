@@ -10,7 +10,7 @@ const PRODUCT_IN_BASKET_KEY = "product-in-basket";
 export const ProductsList = () => {
     const { setToLS, getFromLS, removeFromLS } = useLocalStorage();
     const { dispatch } = useContext(HeaderContext);
-    const products = getFromLS(PRODUCT_IN_BASKET_KEY);
+    const products = getFromLS(PRODUCT_IN_BASKET_KEY) || [];
 
     const increaseProductCount = (productId) => {
         const updatedProducts = products.map((product) =>

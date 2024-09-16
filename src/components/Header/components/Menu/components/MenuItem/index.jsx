@@ -1,8 +1,8 @@
 import "./style.css";
 
-export const MenuItem = ({ name, hasArrow }) => {
+export const MenuItem = ({ name, hasArrow, action }) => {
     return (
-        <div className="menu-item">
+        <div className="menu-item" onClick={action}>
             <span>{name}</span>
             {hasArrow && (
                 <>

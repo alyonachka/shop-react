@@ -1,7 +1,25 @@
 import "./style.css";
 import { MenuItem } from "./components/MenuItem";
+import { useContext } from "react";
+import { PageContext } from "../../context/pageContext";
 
 export const ContentArea = ({ title, menuItems }) => {
+    const { page, setPage } = useContext(PageContext);
+    const changePage = (name) => {
+        if (name.toLowerCase() === page) {
+            return;
+        }
+
+        switch (name) {
+            case "Shop":
+                setPage("shop");
+                break;
+            case "Cart":
+                setPage("cart");
+                break;
+        }
+    };
+
     return (
         <div className="page-header">
             <div className="left-block">
@@ -21,9 +39,14 @@ export const ContentArea = ({ title, menuItems }) => {
                                         name={menu.name}
                                         active={menu.active}
                                         key={ind}
+                                        action={changePage}
                                     />
                                 ) : (
-                                    <MenuItem name={menu} key={ind}/>
+                                    <MenuItem
+                                        name={menu}
+                                        key={ind}
+                                        action={changePage}
+                                    />
                                 )
                             )}
                         </div>

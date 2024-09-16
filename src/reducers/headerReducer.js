@@ -16,6 +16,6 @@ export const headerReducer = (state, action) => {
                 favoritesCounter: action.payload
             }
         default:
-            return Error(`Unknown action type: ${action.type}`)
+            return state
     }
 }

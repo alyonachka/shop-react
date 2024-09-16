@@ -3,6 +3,7 @@ import { useLocalStorage } from "../../../../../../hooks/useLocalStorage";
 import { useEffect, useState, useContext } from "react";
 import { OrderContext } from "../../../../../../context/orderContext";
 import { PriceRow } from "./components/PriceRow";
+import { addDays } from "../../../../../../utils/addDays";
 const PRODUCT_IN_BASKET_KEY = "product-in-basket";
 const DELIVERY_DATE = 5;
 const DELIVERY = 16;
@@ -11,7 +12,7 @@ export const Order = () => {
     const { getFromLS } = useLocalStorage();
     const { orderInfo } = useContext(OrderContext);
 
-    const products = getFromLS(PRODUCT_IN_BASKET_KEY);
+    const products = getFromLS(PRODUCT_IN_BASKET_KEY) || [];
     const [totalPrice, setTotalPrice] = useState(0);
     const [deliveryDate, setDeliveryDate] = useState(null);
 
@@ -28,13 +29,11 @@ export const Order = () => {
     }, [products, orderInfo.discount]);
 
     useEffect(() => {
-        const date = new Date();
+        const date = addDays(DELIVERY_DATE);
 
         const month = date.toLocaleString("en", { month: "short" });
 
-        setDeliveryDate(
-            ` (${month} ${date.getDate() + DELIVERY_DATE} at 16:00)`
-        );
+        setDeliveryDate(` (${month} ${date.getDate()} at 16:00)`);
     }, []);
 
     return (
@@ -43,7 +42,7 @@ export const Order = () => {
             <div className="order-price-wrapper">
                 <PriceRow
                     name="Order price"
-                    data={totalPrice}
+                    data={totalPrice.toFixed(2)}
                     dataClass="price"
                 />
                 <PriceRow
@@ -60,7 +59,7 @@ export const Order = () => {
                 </PriceRow>
                 <PriceRow
                     name="Total"
-                    data={totalPrice + DELIVERY}
+                    data={(totalPrice + DELIVERY).toFixed(2)}
                     dataClass="price"
                     additionalClass="total"
                 />

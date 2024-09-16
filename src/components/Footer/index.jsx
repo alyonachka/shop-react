@@ -1,4 +1,5 @@
-import "./style.css"
+import "./style.css";
+import { Item } from "./components/Item";
 
 export const Footer = () => {
     return (
@@ -37,41 +38,21 @@ export const Footer = () => {
                     <div className="column column-2">
                         <div className="title">About</div>
                         <ul className="custom-list">
-                            <li className="item">
-                                <a href="">About us</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Collections</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Shop</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Blog</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Contact us</a>
-                            </li>
+                            <Item title="About us" />
+                            <Item title="Collections" />
+                            <Item title="Shop" />
+                            <Item title="Blog" />
+                            <Item title="Contact us" />
                         </ul>
                     </div>
                     <div className="column column-3">
                         <div className="title">Useful links</div>
                         <ul className="custom-list">
-                            <li className="item">
-                                <a href="">Privacy Policy</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Terms of use</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Support</a>
-                            </li>
-                            <li className="item">
-                                <a href="">Shipping details</a>
-                            </li>
-                            <li className="item">
-                                <a href="">FAQs</a>
-                            </li>
+                            <Item title="Privacy Policy" />
+                            <Item title="Terms of use" />
+                            <Item title="Support" />
+                            <Item title="Shipping details" />
+                            <Item title="FAQs" />
                         </ul>
                     </div>
                     <div className="column column-4">

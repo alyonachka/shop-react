@@ -5,12 +5,12 @@ export const initialStateProducts = {
     filteredProducts: [...productsJson.products],
     paginatedProducts: [...productsJson.products],
     sort: '',
-    search: ''
+    search: '',
 }
 
 export const productsReducer = (state, action) => {
     switch (action.type) {
-        case 'set_products':
+        case 'set_filtered_products':
             return {
                 ...state,
                 filteredProducts: action.payload

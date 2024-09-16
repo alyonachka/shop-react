@@ -1,7 +1,12 @@
-import "./style.css"
+import "./style.css";
 
-export const MenuItem = ({ name, active }) => {
+export const MenuItem = ({ name, active, action }) => {
     return (
-        <div className={active ? "menu-item active" : "menu-item"}>{name}</div>
+        <div
+            className={active ? "menu-item active" : "menu-item"}
+            onClick={() => action(name)}
+        >
+            {name}
+        </div>
     );
 };
